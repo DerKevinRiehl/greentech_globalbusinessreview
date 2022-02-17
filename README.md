@@ -6,7 +6,7 @@ Published in Journal: "Global Business Review" (2022)
 The purpose of this work is to investigate whether news flows can be used to effectively capture financial success of green commercial activities conducted by listed companies.  The authors employ a large, cross-sectoral, global dataset, consisting of 97,954 articles from ten online magazines, mentioning over 344 different firms that are part of more than 286 listed companies, covering the years 2004 to 2017 and over 32 countries. The notifications focus on GreenTech related activities performed by companies. The authors conduct event studies to calculate abnormal returns and text analytics to gather (hyper-) textual features. Finally, the authors analyse the relationship between returns and features using OLS regression models. Results indicate that textual features extracted from web notifications significantly provide new market information. Thus, news flow is found to serve as a reliable measure to reflect the financial success of green activities for future research on listed companies. Features such as multimedia elements turn out to not provide new market information, while readability and sentiment measures do. 
 The authors extend the growing literature on GreenTech by proposing the novel combination of textual and event study analysis in order to enable research on green commercial activities conducted by listed companies. 
 
-## Data, Software and Analysis Workflow
+## Data, software necessary for the analysis
 In the folder "data" of this repository you can find:
 - **main_regression_tbl.csv** - The table used for regression analysis
 - **TextualAnalysis.zip** - A folder with necessary dictionaries, and a folder with results of textual analysis of hypertexts and titles, readability and word counts
@@ -15,6 +15,33 @@ In the folder "data" of this repository you can find:
 - **DataModelB.zip** - Second part of data, including stock price data and index price data for event study analysis
 
 <img src="https://github.com/DerKevinRiehl/greentech_globalbusinessreview/blob/main/github_imgs/titleimage.PNG" width="500">
+
+
+## Analysis workflow (R code)
+```
+BigData <- read.csv2("data\main_regression_tbl.csv", header = TRUE, sep =";", dec=".")
+
+R <- lm(formula = CAR_MM~log(num_img+1)+log(tit_num_words+1)+sent_posneg_hiv+sent_uncertainty, data = BigData)
+summary(R)
+R <- lm(formula = CAR_MM~log(num_prgrph+1)+log(tit_verb_complx)+sent_posneg_henry+log(num_shares+1), data = BigData)
+summary(R)
+R <- lm(formula = CAR_MM~log(num_lists+1)+log(txt_verb_complx)+sent_posneg_lmd+sent_uncertainty+log(mag_popularity+1), data = BigData)
+summary(R)
+R <- lm(formula = CAR_MM~log(tit_num_words+1)+log(txt_num_words+1)+sent_posneg_lmd+sent_uncertainty+log(mag_popularity+1), data = BigData)
+summary(R)
+R <- lm(formula = CAR_MM~sent_posneg_lmd+sent_uncertainty+log(num_comments+1)+log(num_firms+1), data = BigData)
+summary(R)
+R <- lm(formula = CAR_CMR~log(num_img+1)+log(tit_num_words+1)+sent_posneg_hiv+sent_uncertainty, data = BigData)
+summary(R)
+R <- lm(formula = CAR_CMR~log(num_prgrph+1)+log(tit_verb_complx)+sent_posneg_henry+log(num_shares+1), data = BigData)
+summary(R)
+R <- lm(formula = CAR_CMR~log(num_lists+1)+log(txt_verb_complx)+sent_posneg_lmd+sent_uncertainty+log(mag_popularity+1), data = BigData)
+summary(R)
+R <- lm(formula = CAR_CMR~log(tit_num_words+1)+log(txt_num_words+1)+sent_posneg_lmd+sent_uncertainty+log(mag_popularity+1), data = BigData)
+summary(R)
+R <- lm(formula = CAR_CMR~sent_posneg_lmd+sent_uncertainty+log(num_comments+1)+log(num_firms+1), data = BigData)
+summary(R)
+```
 
 ## Citations
 Please cite our paper if you find our work, data, analysis and code useful:
