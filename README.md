@@ -7,7 +7,7 @@ The purpose of this work is to investigate whether news flows can be used to eff
 The authors extend the growing literature on GreenTech by proposing the novel combination of textual and event study analysis in order to enable research on green commercial activities conducted by listed companies. 
 
 
-<img src="https://github.com/DerKevinRiehl/greentechpaper_sustainability/blob/main/github_imgs/titleimage.PNG" width="400">
+<img src="https://github.com/DerKevinRiehl/greentech_globalbusinessreview/blob/main/github_imgs/titleimage.PNG" width="500">
 
 ## Data, Code and Analysis Workflow availability
 All required data and sourcecode to reproduce the analysis can be found on this GitHub repository.
